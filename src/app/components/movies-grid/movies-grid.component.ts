@@ -13,7 +13,6 @@ export class MoviesGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.movies);
   }
 
 }
