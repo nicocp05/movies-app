@@ -7,11 +7,12 @@ import { PipesModule } from '../pipes/pipes.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { MoviesGridComponent } from './movies-grid/movies-grid.component';
+import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.component';
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, SlideshowComponent, MoviesGridComponent],
+  declarations: [NavbarComponent, SlideshowComponent, MoviesGridComponent, CastSlideshowComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -21,7 +22,8 @@ import { MoviesGridComponent } from './movies-grid/movies-grid.component';
   exports: [
     NavbarComponent,
     SlideshowComponent,
-    MoviesGridComponent
+    MoviesGridComponent,
+    CastSlideshowComponent
   ]
 })
 export class ComponentsModule { }

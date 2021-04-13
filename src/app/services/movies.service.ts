@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Cast, Credits } from '../interfaces/credits';
+import { MovieDetails } from '../interfaces/movie-details';
 import { Movie, Theatres } from '../interfaces/theatres';
 
 @Injectable({
@@ -53,6 +55,23 @@ export class MoviesService {
 
   resetPage() {
     this.moviesPage = 1;
+  }
+
+  getMovieDetail( id: String ) {
+    return this.http.get<MovieDetails>(`${this.url}/movie/${id}`, {
+      params: this.params
+    }).pipe(
+      catchError( err => of(null))
+    );
+  }
+
+  getCast( id: String ): Observable<Cast[]> {
+    return this.http.get<Credits>(`${this.url}/movie/${id}/credits`, {
+      params: this.params
+    }).pipe(
+      map( res => res.cast ),
+      catchError( err => of([]))
+    )
   }
 
 }
